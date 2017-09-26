@@ -4,15 +4,13 @@
 using namespace std;
 
 #define INPUT_FILE "input.txt"
-#define OUTPUT_FILE "output.txt"
 
 int main(int argc, char const *argv[])
 {
     ifstream input(INPUT_FILE);
-    ofstream output(OUTPUT_FILE);
 
     /* Check if opening failed */
-    if (!input.is_open() || !output.is_open())
+    if (!input.is_open())
         return 1;
 
     /* Iterate every line in input file and get the longest's length */
