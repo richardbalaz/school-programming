@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ int main(int argc, char const *argv[])
     }
 
     /* Write result to output file */
-    output << longest_line;
+    cout << longest_line << endl;
 
     return 0;
 }
