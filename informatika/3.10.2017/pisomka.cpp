@@ -34,11 +34,13 @@ int get_articles_count(ifstream &invoice)
 	return count;
 }
 
-article *allocate_articles_list(int articles_count)
+/* Allocate memory for all articles from invoce  */
+article *allocate_article_list(int articles_count)
 {
-	return (new article[articles_count]);
+	return new article[articles_count];
 }
 
+/* Parse all articles from invoce file to article list */
 void parse_articles(ifstream &invoice, article *articles)
 {
 	invoice.clear();
@@ -64,13 +66,13 @@ void parse_articles(ifstream &invoice, article *articles)
 	}	
 }
 
+/* Summarize all prices from article list */
 float get_invoce_price(article *articles, int articles_count)
 {
 	float sum = 0.0;
 
-	for (int i = 0; i < articles_count; i++) {
+	for (int i = 0; i < articles_count; i++)
 		sum += articles[i].price * articles[i].number;
-	}
 
 	return sum;
 }
@@ -85,17 +87,17 @@ int main(int argc, char const *argv[])
 	}
 
 	int articles_count = get_articles_count(invoice);
-	article *articles = allocate_articles_list(articles_count);
+	article *articles = allocate_article_list(articles_count);
 
 	parse_articles(invoice, articles);
 
 	/* Print out invoce summary */
 
 	cout << "názov tovaru\t\t\tcena za 1ks\tpočet" << endl;
-	
 
+	/* Iterate through all articles in list */
 	for (int i = 0; i < articles_count; ++i) {
-		cout << (articles[i].name).substr(0, 20) << "\t\t";
+		cout << articles[i].name.substr(0, 20) << "\t\t";
 		cout << setprecision(2) << fixed << articles[i].price << "€" << "\t\t";
 		cout << articles[i].number << endl;
 	}
