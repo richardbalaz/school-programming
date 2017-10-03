@@ -108,6 +108,7 @@ int main(int argc, char const *argv[])
 	cout << "Spolu:\t\t" << setprecision(2) << fixed << invoce_price << " Eur bez DPH";
 	cout << "\t" << setprecision(2) << fixed << invoce_price * TAX_CONST  << " Eur s DPH" << endl;
 
+	free(articles);
 	invoice.close();
 
 	return 0;
